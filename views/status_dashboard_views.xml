@@ -9,7 +9,7 @@
                 <field name="severity" widget="badge" options="{'low': 'info', 'medium': 'primary', 'high': 'warning', 'critical': 'danger'}"/>
                 <field name="description"/>
                 <field name="reported_date"/>
-                <button name="action_resolve_incident" type="object" string="Resolve" class="btn-primary"/>
+                <button name="save_button" type="object" string="Save" class="btn-primary"/> 
             </tree>
         </field>
     </record>
