@@ -5,10 +5,11 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-                <field name="status" widget="statusbar" options="{'color_success': 'online', 'color_warning': 'Partially', 'color_danger': 'offline'}"/>
+                <field name="status" widget="statusbar" options="{'color_success': 'online', 'color_warning': 'partially', 'color_danger': 'offline'}"/>
                 <field name="severity" widget="badge" options="{'low': 'info', 'medium': 'primary', 'high': 'warning', 'critical': 'danger'}"/>
                 <field name="description"/>
                 <field name="reported_date"/>
+                <button name="action_resolve_incident" type="object" string="Resolve" class="btn-primary"/>
             </tree>
         </field>
     </record>
@@ -25,12 +26,13 @@
                         <field name="severity"/>
                         <field name="description"/>
                         <field name="reported_date"/>
+                        <button name="action_resolve_incident" type="object" string="Resolve" class="btn-primary"/>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
-    
+
     <record id="view_status_dashboard_graph" model="ir.ui.view">
         <field name="name">status.dashboard.graph</field>
         <field name="model">status.dashboard</field>

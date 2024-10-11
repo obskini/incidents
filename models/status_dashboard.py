@@ -18,4 +18,7 @@ class StatusDashboard(models.Model):
         ('high', 'High'),
         ('critical', 'Critical'),
     ], string='Severity', default='low', required=True)
-    
+
+    def action_resolve_incident(self):
+        """ Mark the incident as resolved by deleting it from the database """
+        self.unlink()
