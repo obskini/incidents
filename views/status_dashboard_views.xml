@@ -1,0 +1,54 @@
+<odoo>
+    <record id="view_status_dashboard_tree" model="ir.ui.view">
+        <field name="name">status.dashboard.tree</field>
+        <field name="model">status.dashboard</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="status" widget="statusbar" options="{'color_success': 'online', 'color_warning': 'Partially', 'color_danger': 'offline'}"/>
+                <field name="severity" widget="badge" options="{'low': 'info', 'medium': 'primary', 'high': 'warning', 'critical': 'danger'}"/>
+                <field name="description"/>
+                <field name="reported_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_status_dashboard_form" model="ir.ui.view">
+        <field name="name">status.dashboard.form</field>
+        <field name="model">status.dashboard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="status"/>
+                        <field name="severity"/>
+                        <field name="description"/>
+                        <field name="reported_date"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="view_status_dashboard_graph" model="ir.ui.view">
+        <field name="name">status.dashboard.graph</field>
+        <field name="model">status.dashboard</field>
+        <field name="arch" type="xml">
+            <graph string="Incidents Over Time" type="bar">
+                <field name="reported_date" interval="day"/>
+                <field name="severity" type="row"/>
+                <field name="id" string="Number of Incidents" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_status_dashboard" model="ir.actions.act_window">
+        <field name="name">Status Dashboard</field>
+        <field name="res_model">status.dashboard</field>
+        <field name="view_mode">tree,form,graph</field>
+    </record>
+
+    <menuitem id="menu_status_dashboard" name="Status Dashboard" sequence="10"/>
+    <menuitem id="menu_status_dashboard_items" name="Dashboard Items" parent="menu_status_dashboard" action="action_status_dashboard"/>
+</odoo>
